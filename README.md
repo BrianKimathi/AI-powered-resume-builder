@@ -12,7 +12,8 @@ The repository is structured into three isolated, decoupled modules:
 resume-builder/
 ├── backend/        # Spring Boot 3 REST API + Security + Paystack & AI Services
 ├── frontend/       # User Portal (React + Vite + Live A4 PDF Split-Screen Builder)
-└── admin-panel/    # Admin Dashboard (React + Vite + Recharts Analytics & Sales Ledger)
+├── admin-panel/    # Admin Dashboard (React + Vite + Recharts Analytics & Sales Ledger)
+└── docker-compose.yml # Multi-container deployment orchestrator
 ```
 
 ---
@@ -46,6 +47,7 @@ resume-builder/
 - **PostgreSQL / H2 Database**: Relational schema with optimistic locking (`@Version`) to prevent concurrent edit conflicts.
 - **Paystack Webhook HMAC SHA512 Handler**: Secure server-side signature verification ensuring zero payment spoofing.
 - **Paginated REST APIs**: Standardized `PageResponse<T>` wrapper for `Pageable` queries (`?page=0&size=10&sort=id,desc`).
+- **Automated Test Suite**: Integration test suite with MockMvc and JUnit 5 for authentication and AI agent execution.
 
 ---
 
@@ -61,25 +63,49 @@ resume-builder/
 | **Charts** | Recharts | v2.12 |
 | **Payment Gateway** | Paystack REST API & Inline SDK | v1.0 |
 | **AI LLM Engine** | Google Gemini API (gemini-1.5-flash) | Generative Language API |
+| **Containerization** | Docker & Docker Compose | Compose Spec v3.8 |
+| **CI/CD** | GitHub Actions | Ubuntu 22.04 LTS |
 
 ---
 
 ## Quick Start Guide
 
-### 1. Backend Setup (`backend/`)
+### Option A: One-Command Docker Deployment (Recommended)
+
+Run the entire platform (PostgreSQL, Backend API, Frontend Client, and Admin Panel) in isolated containers:
+
+```bash
+docker compose up --build
+```
+
+- **Frontend User Portal**: `http://localhost:5173`
+- **Admin Dashboard**: `http://localhost:5174`
+- **Backend API**: `http://localhost:8081/api/v1`
+- **PostgreSQL Database**: `localhost:5432`
+
+---
+
+### Option B: Local Development Setup
+
+#### 1. Backend Setup (`backend/`)
 
 Navigate to the backend directory:
 ```bash
 cd backend
 ```
 
-#### Running with In-Memory H2 Database (Zero Setup):
+##### Running with In-Memory H2 Database (Zero Setup):
 ```bash
 mvn spring-boot:run
 ```
 > The API will start on **`http://localhost:8081/api/v1`**. The H2 console is accessible at `http://localhost:8081/h2-console`.
 
-#### Running with Local PostgreSQL:
+##### Running Tests:
+```bash
+mvn test
+```
+
+##### Running with Local PostgreSQL:
 1. Ensure PostgreSQL is running locally.
 2. Create the database:
    ```sql
@@ -92,7 +118,7 @@ mvn spring-boot:run
 
 ---
 
-### 2. Frontend User Application (`frontend/`)
+#### 2. Frontend User Application (`frontend/`)
 
 In a new terminal window:
 ```bash
@@ -104,7 +130,7 @@ npm run dev
 
 ---
 
-### 3. Admin Panel (`admin-panel/`)
+#### 3. Admin Panel (`admin-panel/`)
 
 In a new terminal window:
 ```bash
