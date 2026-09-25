@@ -1,0 +1,52 @@
+# Root .gitignore for AI Resume Builder (Full-Stack Spring Boot + React Vite)
+
+# Compiled & Build Artifacts
+target/
+build/
+dist/
+dist-ssr/
+node_modules/
+.output/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE & Editor Directories / Files
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+desktop.ini
+
+# Environment Variables & Keys
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary / Database Files
+*.db
+*.sqlite
+*.h2.db
+*.trace.db
+
+# Large generated PDF binaries
+*.pdf
