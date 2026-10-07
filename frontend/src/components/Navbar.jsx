@@ -56,7 +56,7 @@ export default function Navbar({
               <button 
                 onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                 className="flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-xl px-3 py-1.5 transition text-left">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs uppercase shadow-inner">
+                <div className="w-7 h-7 rounded-full bg-sky-600 flex items-center justify-center text-white font-bold text-xs uppercase">
                   {(user.fullName || user.email || 'U').charAt(0)}
                 </div>
                 <div className="hidden sm:block">

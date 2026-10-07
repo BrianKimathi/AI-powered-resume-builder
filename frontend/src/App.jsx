@@ -924,26 +924,30 @@ export default function App() {
         <div className="space-y-16 pb-20 pt-12">
           {/* Hero Section */}
           <section className="px-4 max-w-5xl mx-auto text-center space-y-6">
-            <span className="px-3.5 py-1 bg-sky-500/10 text-sky-400 border border-sky-500/20 rounded-full text-xs font-bold uppercase tracking-wider">
-              AI-Powered Multi-Industry Resume Platform
-            </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-100 leading-tight">
-              Build a Professional Resume That Gets You Noticed in <span className="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">Any Industry</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-slate-900 border border-slate-800 rounded-full text-xs font-semibold text-sky-400">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Multi-Industry AI Resume Studio</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-100 leading-tight tracking-tight">
+              Build a Professional Resume That Gets You Hired in <span className="text-sky-400">Any Industry</span>
             </h1>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Software Engineering, HR, Mechanical, Healthcare, Finance, Marketing, Law, & Education. Intelligently adapts section structures to your exact profession.
+            
+            <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Software Engineering, HR, Healthcare, Finance, Marketing, Law, & Education. Intelligently adapts structure, action verbs, and ATS keywords to your exact role.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 pt-2">
+            
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
               <button 
                 onClick={() => setCurrentView('onboarding-field')}
-                className="px-8 py-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:brightness-110 text-white font-bold rounded-xl text-lg shadow-xl shadow-sky-500/20 transition flex items-center gap-3">
-                Create My Resume Now <ArrowRight className="w-5 h-5" />
+                className="px-8 py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl text-base shadow-lg transition flex items-center gap-2.5">
+                Create My Resume Now <ArrowRight className="w-4 h-4" />
               </button>
 
               <button 
                 onClick={() => setCurrentView('templates')}
-                className="px-8 py-4 bg-slate-900 border border-slate-800 hover:border-sky-500 text-slate-200 font-bold rounded-xl text-lg shadow-lg transition flex items-center gap-3">
-                <Palette className="w-5 h-5 text-sky-400" /> View All Templates ({dbTemplates.length})
+                className="px-8 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-200 font-bold rounded-xl text-base transition flex items-center gap-2.5">
+                <Palette className="w-4 h-4 text-sky-400" /> View All Templates ({dbTemplates.length})
               </button>
             </div>
           </section>
@@ -951,17 +955,17 @@ export default function App() {
           {/* Feature Highlights Grid */}
           <section className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3">
-              <div className="w-10 h-10 bg-sky-500/10 text-sky-400 rounded-xl flex items-center justify-center font-bold">1</div>
+              <div className="w-10 h-10 bg-sky-950 border border-sky-800 text-sky-400 rounded-xl flex items-center justify-center font-bold">1</div>
               <h3 className="font-bold text-lg text-slate-100">Industry-Specific AI</h3>
               <p className="text-xs text-slate-400 leading-relaxed">Adapts section structures, terminology, and metrics to HR, Software, Finance, or Engineering.</p>
             </div>
             <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3">
-              <div className="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold">2</div>
+              <div className="w-10 h-10 bg-emerald-950 border border-emerald-800 text-emerald-400 rounded-xl flex items-center justify-center font-bold">2</div>
               <h3 className="font-bold text-lg text-slate-100">100% ATS Parser Pass Rate</h3>
               <p className="text-xs text-slate-400 leading-relaxed">Designed according to recruitment parsing guidelines for Workday, Greenhouse, and Lever.</p>
             </div>
             <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3">
-              <div className="w-10 h-10 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold">3</div>
+              <div className="w-10 h-10 bg-slate-800 border border-slate-700 text-slate-300 rounded-xl flex items-center justify-center font-bold">3</div>
               <h3 className="font-bold text-lg text-slate-100">Export PDF & Cover Letters</h3>
               <p className="text-xs text-slate-400 leading-relaxed">Instant high-resolution PDF download with integrated cover letter matching.</p>
             </div>
