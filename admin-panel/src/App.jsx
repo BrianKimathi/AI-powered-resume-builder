@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8081/api/v1' : 'https://resumebuilderapi.briankimathi.dev/api/v1');
+
 const chartData = [
   { name: 'Mon', revenue: 145000 },
   { name: 'Tue', revenue: 210000 },
@@ -213,7 +215,7 @@ export default function App() {
 
   useEffect(() => {
     if (isAdminAuthenticated) {
-      fetch('http://localhost:8081/api/v1/admin/settings')
+      fetch(`${API_BASE_URL}/admin/settings`)
         .then(res => res.json())
         .then(data => {
           setKeyVault(prev => ({
@@ -236,7 +238,7 @@ export default function App() {
     setLoggingIn(true);
 
     try {
-      const res = await fetch('http://localhost:8081/api/v1/auth/login', {
+      const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

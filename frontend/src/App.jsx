@@ -7,7 +7,7 @@ import {
 import Navbar from './components/Navbar';
 import A4DocumentRenderer from './components/A4DocumentRenderer';
 
-const API_BASE_URL = 'http://localhost:8081/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8081/api/v1' : 'https://resumebuilderapi.briankimathi.dev/api/v1');
 
 // 10 DISTINCT RESUME TEMPLATES SPECIFICATION
 const ALL_TEMPLATES = [
@@ -240,7 +240,7 @@ export default function App() {
   const [paystackPublicKey, setPaystackPublicKey] = useState('pk_test_paystack_public_key_mock');
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/v1/templates')
+    fetch(`${API_BASE_URL}/templates`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
@@ -257,14 +257,14 @@ export default function App() {
       })
       .catch(() => {});
 
-    fetch('http://localhost:8081/api/v1/admin/plans')
+    fetch(`${API_BASE_URL}/admin/plans`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) setSystemPlans(data);
       })
       .catch(() => {});
 
-    fetch('http://localhost:8081/api/v1/admin/settings')
+    fetch(`${API_BASE_URL}/admin/settings`)
       .then(res => res.json())
       .then(data => {
         if (data) {
@@ -334,7 +334,7 @@ export default function App() {
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
     try {
-      const endpoint = authMode === 'login' ? 'http://localhost:8081/api/v1/auth/login' : 'http://localhost:8081/api/v1/auth/register';
+      const endpoint = authMode === 'login' ? `${API_BASE_URL}/auth/login` : `${API_BASE_URL}/auth/register`;
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
